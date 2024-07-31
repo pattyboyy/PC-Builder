@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-secondary-50 text-secondary-900 font-sans;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-soft focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-200 text-secondary-900 hover:bg-secondary-300 focus:ring-secondary-500;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 border border-secondary-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+  }
+
+  .card {
+    @apply bg-white shadow-soft rounded-lg p-6;
+  }
+}
+
+@layer utilities {
+  .transition-soft {
+    @apply transition duration-300 ease-in-out;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary-400;
+}
