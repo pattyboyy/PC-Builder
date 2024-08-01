@@ -1,4 +1,3 @@
-// src/components/AIRecommendation.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -7,6 +6,11 @@ const AIRecommendation = ({ budget, usage, onRecommendation }) => {
   const [error, setError] = useState(null);
 
   const generateRecommendation = async () => {
+    if (!budget || !usage) {
+      setError('Please provide both budget and usage information.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -14,7 +18,7 @@ const AIRecommendation = ({ budget, usage, onRecommendation }) => {
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
         {
-          model: "gpt-4o-mini",
+          model: "gpt-3.5-turbo",
           messages: [
             {
               role: "system",
@@ -51,7 +55,22 @@ Please ensure your explanation is thorough and easy to understand for someone wh
       onRecommendation(recommendation);
     } catch (err) {
       console.error('Error generating recommendation:', err);
-      setError('Failed to generate recommendation. Please try again.');
+      if (err.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error(err.response.data);
+        console.error(err.response.status);
+        console.error(err.response.headers);
+        setError(`API Error: ${err.response.status} - ${err.response.data.error?.message || 'Unknown error'}`);
+      } else if (err.request) {
+        // The request was made but no response was received
+        console.error(err.request);
+        setError('No response received from the server. Please check your internet connection and try again.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error', err.message);
+        setError(`Error: ${err.message}`);
+      }
     } finally {
       setLoading(false);
     }
