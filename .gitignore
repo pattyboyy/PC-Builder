@@ -50,7 +50,8 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
-src/env.js
+# API keys
+client/src/env.js
 
 # Vite
 vite.config.ts.timestamp-*
