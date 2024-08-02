@@ -11,6 +11,11 @@ const AIRecommendation = ({ budget, usage, onRecommendation }) => {
       return;
     }
 
+    if (!import.meta.env.VITE_OPENAI_API_KEY) {
+      setError('OpenAI API key is not set. Please check your environment variables.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -56,18 +61,14 @@ Please ensure your explanation is thorough and easy to understand for someone wh
     } catch (err) {
       console.error('Error generating recommendation:', err);
       if (err.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.error(err.response.data);
         console.error(err.response.status);
         console.error(err.response.headers);
         setError(`API Error: ${err.response.status} - ${err.response.data.error?.message || 'Unknown error'}`);
       } else if (err.request) {
-        // The request was made but no response was received
         console.error(err.request);
         setError('No response received from the server. Please check your internet connection and try again.');
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.error('Error', err.message);
         setError(`Error: ${err.message}`);
       }

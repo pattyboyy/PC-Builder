@@ -19,4 +19,5 @@
     "dependencies": {
         "jsonwebtoken": "^9.0.2"
     }
+
 }
