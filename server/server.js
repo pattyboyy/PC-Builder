@@ -2,7 +2,8 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-// ! ADD AUTH MIDDLEWARE ONCE ITS DONE !
+const { authMiddleware } = require('./utils/auth');
+
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -20,9 +21,9 @@ const startApolloServer = async () => {
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
 
-    app.use('/graphql', expressMiddleware(server 
-        // would put auth middleware here after a comma (ex. { context: authMiddleware })
-    ));
+    app.use('/graphql', expressMiddleware(server, {context: authMiddleware}));
+  
+   
     
     if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, '../client/dist')));
