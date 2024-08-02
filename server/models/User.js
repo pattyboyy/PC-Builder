@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Build'
+        // ? Might preferrably be used as 
+        // builds: [Build.schema]
+        // since it's being imported directly
         }
     ],
   createdAt: {
