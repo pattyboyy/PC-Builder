@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { OPENAI_API_KEY } from '../env';
 
 const AIRecommendation = ({ budget, usage, onRecommendation }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    console.log('OPENAI_API_KEY:', OPENAI_API_KEY ? 'Set' : 'Not set');
+  }, []);
+
   const generateRecommendation = async () => {
     if (!budget || !usage) {
       setError('Please provide both budget and usage information.');
+      return;
+    }
+
+    if (!OPENAI_API_KEY) {
+      setError('OpenAI API key is not set. Please check your configuration.');
       return;
     }
 
@@ -22,21 +32,11 @@ const AIRecommendation = ({ budget, usage, onRecommendation }) => {
           messages: [
             {
               role: "system",
-              content: "You are an expert PC builder assistant that provides detailed and thorough PC build recommendations. Your recommendations should include explanations for each component choice and how they work together to meet the user's needs."
+              content: "You are an expert PC builder assistant that provides detailed and thorough PC build recommendations."
             },
             {
               role: "user",
-              content: `Generate a detailed PC build recommendation for a budget of $${budget} and usage: ${usage}. Please format your response as follows:
-
-1. Start with a brief overview of the build and how it meets the user's needs.
-2. For each component, provide:
-   - The recommended part
-   - Its price
-   - A detailed explanation of why this part was chosen, its performance characteristics, and how it fits with the overall build and usage requirements.
-3. Include a section on how the components work together to achieve the desired performance for the specified usage.
-4. End with a total cost breakdown and any final thoughts or potential upgrade paths.
-
-Please ensure your explanation is thorough and easy to understand for someone who may not be an expert in PC building.`
+              content: `Generate a detailed PC build recommendation for a budget of $${budget} and usage: ${usage}.`
             }
           ],
           max_tokens: 1500,
@@ -45,7 +45,7 @@ Please ensure your explanation is thorough and easy to understand for someone wh
         },
         {
           headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${OPENAI_API_KEY}`,
             'Content-Type': 'application/json',
           },
         }
@@ -56,18 +56,14 @@ Please ensure your explanation is thorough and easy to understand for someone wh
     } catch (err) {
       console.error('Error generating recommendation:', err);
       if (err.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.error(err.response.data);
         console.error(err.response.status);
         console.error(err.response.headers);
         setError(`API Error: ${err.response.status} - ${err.response.data.error?.message || 'Unknown error'}`);
       } else if (err.request) {
-        // The request was made but no response was received
         console.error(err.request);
         setError('No response received from the server. Please check your internet connection and try again.');
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.error('Error', err.message);
         setError(`Error: ${err.message}`);
       }
