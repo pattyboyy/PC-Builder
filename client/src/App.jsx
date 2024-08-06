@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
+import LoginModal from './components/LoginModal'; // You'll need to create this
+import SignupModal from './components/SignupModal'; // You'll need to create this
 import './App.css';
 import Auth from '../utils/auth';
 
-
-
 const App = () => {
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
+
     const showLogout = () => {
         if (Auth.loggedIn()) {
             return (
@@ -17,11 +20,22 @@ const App = () => {
             );
         } else {
             return (
-                <li><Link to="/login" className="text-secondary-600 hover:text-primary-600 transition-soft">Login/signup</Link></li>
+                <li>
+                    <button 
+                        onClick={() => setShowLoginModal(true)} 
+                        className="text-secondary-600 hover:text-primary-600 transition-soft"
+                    >
+                        Login
+                    </button>
+                </li>
             );
         }
-    
     };
+
+    const handleSignup = () => {
+        setShowSignupModal(true);
+    };
+
   return (
     <Router>
       <div className="min-h-screen bg-secondary-50 text-secondary-900">
@@ -35,6 +49,14 @@ const App = () => {
                   <li><Link to="/build-on-my-own" className="text-secondary-600 hover:text-primary-600 transition-soft">Build My Own</Link></li>
                   <li><Link to="/build-for-me" className="text-secondary-600 hover:text-primary-600 transition-soft">Build For Me</Link></li>
                   {showLogout()}
+                  <li>
+                    <button 
+                      onClick={handleSignup} 
+                      className="text-secondary-600 hover:text-primary-600 transition-soft"
+                    >
+                      Signup
+                    </button>
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -60,6 +82,25 @@ const App = () => {
             <p className="text-center text-secondary-500">&copy; 2024 Rig-Builder Pro. All rights reserved.</p>
           </div>
         </footer>
+        
+        {showLoginModal && (
+          <LoginModal 
+            onClose={() => setShowLoginModal(false)}
+            onSignupClick={() => {
+              setShowLoginModal(false);
+              setShowSignupModal(true);
+            }}
+          />
+        )}
+        {showSignupModal && (
+          <SignupModal 
+            onClose={() => setShowSignupModal(false)}
+            onLoginClick={() => {
+              setShowSignupModal(false);
+              setShowLoginModal(true);
+            }}
+          />
+        )}
       </div>
     </Router>
   );
