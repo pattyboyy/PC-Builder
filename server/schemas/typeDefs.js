@@ -5,7 +5,6 @@ const typeDefs = `
     id: ID!
     username: String!
     email: String!
-    password: String!
     builds: [Build!]!
   }
 

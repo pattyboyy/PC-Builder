@@ -11,9 +11,9 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_BUILD = gql`
-  mutation addBuild(
-    $user: ID!
+export const CREATE_BUILD = gql`
+  mutation createBuild(
+    $userID: ID!
     $name: String!
     $cpu: String!
     $gpu: String!
@@ -21,11 +21,11 @@ export const ADD_BUILD = gql`
     $storage: String!
     $motherboard: String!
     $powerSupply: String!
-    $case: String!
+    $caseName: String!
     $cooling: String!
   ) {
-    addBuild(
-      user: $user
+    createBuild(
+      userID: $user
       name: $name
       cpu: $cpu
       gpu: $gpu
@@ -33,11 +33,13 @@ export const ADD_BUILD = gql`
       storage: $storage
       motherboard: $motherboard
       powerSupply: $powerSupply
-      case: $case
+      caseName: $caseName
       cooling: $cooling
     ) {
       id
-      user
+      user {
+        _id
+      }
       name
       cpu
       gpu
@@ -45,16 +47,16 @@ export const ADD_BUILD = gql`
       storage
       motherboard
       powerSupply
-      case
+      caseName
       cooling
       createdAt
     }
   }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+export const CREATE_USER = gql`
+  mutation createUser($username: String!, $email: String!, $password: String!) {
+    createUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
