@@ -12,7 +12,7 @@ export const QUERY_BUILD = gql`
       storage
       motherboard
       powerSupply
-      case
+      caseName
       cooling
       createdAt
     }
@@ -34,7 +34,7 @@ export const QUERY_USER = gql`
         storage
         motherboard
         powerSupply
-        case
+        caseName
         cooling
         createdAt
       }

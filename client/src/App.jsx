@@ -5,8 +5,23 @@ import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
 import './App.css';
+import Auth from '../utils/auth';
+
+
 
 const App = () => {
+    const showLogout = () => {
+        if (Auth.loggedIn()) {
+            return (
+                <li><Link to="/logout" className="text-secondary-600 hover:text-primary-600 transition-soft">Logout</Link></li>
+            );
+        } else {
+            return (
+                <li><Link to="/login" className="text-secondary-600 hover:text-primary-600 transition-soft">Login/signup</Link></li>
+            );
+        }
+    
+    };
   return (
     <Router>
       <div className="min-h-screen bg-secondary-50 text-secondary-900">
@@ -19,8 +34,7 @@ const App = () => {
                   <li><Link to="/" className="text-secondary-600 hover:text-primary-600 transition-soft">Home</Link></li>
                   <li><Link to="/build-on-my-own" className="text-secondary-600 hover:text-primary-600 transition-soft">Build My Own</Link></li>
                   <li><Link to="/build-for-me" className="text-secondary-600 hover:text-primary-600 transition-soft">Build For Me</Link></li>
-                  <li><Link to="/about" className="text-secondary-600 hover:text-primary-600 transition-soft">About</Link></li>
-                  <li><Link to="/contact" className="text-secondary-600 hover:text-primary-600 transition-soft">Contact</Link></li>
+                  {showLogout()}
                 </ul>
               </nav>
             </div>
@@ -37,8 +51,6 @@ const App = () => {
                 <Route path="/" element={<Welcome />} />
                 <Route path="/build-for-me" element={<BuildForMe />} />
                 <Route path="/build-on-my-own" element={<BuildOnMyOwn />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
               </Routes>
             </motion.div>
           </div>
