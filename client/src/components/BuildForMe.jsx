@@ -4,7 +4,7 @@ import AIRecommendation from './AIRecommendation';
 import PCConfiguration from './PCConfiguration';
 
 const BuildForMe = () => {
-  const [budget, setBudget] = React.useState(0);
+  const [budget, setBudget] = React.useState('');
   const [usage, setUsage] = React.useState('');
   const [aiRecommendation, setAiRecommendation] = React.useState(null);
 
