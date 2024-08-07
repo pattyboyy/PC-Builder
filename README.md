@@ -27,9 +27,6 @@ This project is not currently licensed.
 ## Contributing
 Please email us with any comments and suggestions about Rig-Builder Pro.
 
-## Tests
-npm run test
-
 ## Questions
 If you have any questions about this Project or its Repository, we can be reached at <a href=mailto:support@rigbuilderpro.com>support@rigbuilderpro.com</a>.
 
