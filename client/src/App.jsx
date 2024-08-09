@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
-import LoginModal from './components/LoginModal';
-import SignupModal from './components/SignupModal';
+import LoginModal from './components/LoginModal'; // You'll need to create this
+import SignupModal from './components/SignupModal'; // You'll need to create this
+import logo from './assets/RBPro(final).png'; // Logo for the website
 import './App.css';
 import Auth from '../utils/auth';
 
@@ -42,7 +43,9 @@ const App = () => {
         <header className="bg-white shadow-soft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-6">
-              <Link to="/" className="text-3xl font-bold text-primary-600">Rig-Builder Pro</Link>
+              <div className='header'>
+                <Link to="/" className="text-3xl font-bold text-primary-600">Rig-Builder Pro</Link>
+              </div>
               <nav>
                 <ul className="flex space-x-4">
                   <li><Link to="/" className="text-secondary-600 hover:text-primary-600 transition-soft">Home</Link></li>
