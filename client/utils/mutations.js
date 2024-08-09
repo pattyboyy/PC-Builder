@@ -1,11 +1,26 @@
 import { gql } from "@apollo/client";
 
-export const LOGIN = gql`
+export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
         _id
+        username
+        email
+      }
+    }
+  }
+`;
+
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
       }
     }
   }
@@ -25,7 +40,7 @@ export const CREATE_BUILD = gql`
     $cooling: String!
   ) {
     createBuild(
-      userID: $user
+      userID: $userID
       name: $name
       cpu: $cpu
       gpu: $gpu
@@ -36,9 +51,10 @@ export const CREATE_BUILD = gql`
       caseName: $caseName
       cooling: $cooling
     ) {
-      id
+      _id
       user {
         _id
+        username
       }
       name
       cpu
@@ -50,17 +66,6 @@ export const CREATE_BUILD = gql`
       caseName
       cooling
       createdAt
-    }
-  }
-`;
-
-export const CREATE_USER = gql`
-  mutation createUser($username: String!, $email: String!, $password: String!) {
-    createUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-      }
     }
   }
 `;

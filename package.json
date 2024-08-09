@@ -18,6 +18,9 @@
         "dotenv": "^16.4.5"
     },
     "dependencies": {
+        "@apollo/client": "^3.11.3",
+        "graphql": "^16.9.0",
+        "graphql-tag": "^2.12.6",
         "jsonwebtoken": "^9.0.2"
     }
 }

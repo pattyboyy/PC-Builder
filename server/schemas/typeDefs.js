@@ -2,14 +2,14 @@ const { gql } = require('@apollo/server');
 
 const typeDefs = `
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
-    builds: [Build!]!
+    builds: [Build!]
   }
 
   type Build {
-    id: ID!
+    _id: ID!
     user: User!
     name: String!
     cpu: String!
@@ -23,13 +23,19 @@ const typeDefs = `
     createdAt: String!
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     user(id: ID!): User
     builds(userId: ID!): [Build!]!
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): User!
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     createBuild(userId: ID!, name: String!, cpu: String!, gpu: String!, ram: String!, storage: String!, motherboard: String!, powerSupply: String!, case: String!, cooling: String!): Build!
   }
 `;
