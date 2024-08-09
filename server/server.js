@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const { gql } = require('graphql-tag');
+
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const cors = require('cors'); // Add this line
