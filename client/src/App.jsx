@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
-import LoginModal from './components/LoginModal'; // You'll need to create this
-import SignupModal from './components/SignupModal'; // You'll need to create this
+import LoginModal from './components/LoginModal';
+import SignupModal from './components/SignupModal';
 import logo from './assets/RBPro(final).png'; // Logo for the website
 import './App.css';
 import Auth from '../utils/auth';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3001/graphql', // Replace with your actual GraphQL endpoint
+  cache: new InMemoryCache()
+});
 
 const App = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -123,4 +129,12 @@ const Contact = () => (
   </div>
 );
 
-export default App;
+function AppWrapper() {
+  return (
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  );
+}
+
+export default AppWrapper;
