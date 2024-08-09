@@ -8,7 +8,9 @@ const LoginModal = ({ onClose, onSignupClick }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const [login, { loading }] = useMutation(LOGIN_USER);
+  const [login, { loading }] = useMutation(LOGIN_USER, {
+    fetchPolicy: 'no-cache' // Add this line
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
