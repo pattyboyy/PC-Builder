@@ -6,7 +6,10 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
   link: httpLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: `Bearer ${Auth.getToken()}`,
+  },
 });
 
 export default client;
