@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
-import LoginModal from './components/LoginModal'; // You'll need to create this
-import SignupModal from './components/SignupModal'; // You'll need to create this
+import LoginModal from './components/LoginModal'; 
+import SignupModal from './components/SignupModal'; 
 import logo from './assets/RBPro(final).png'; // Logo for the website
 import './App.css';
 import Auth from '../utils/auth';
