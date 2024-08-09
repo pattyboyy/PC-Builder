@@ -1,12 +1,16 @@
+<a id="readme-top"></a>
 # Rig-Builder Pro
-Rig-Builder Pro is a resourceful application that allows users to build Personal Computers. Whether users want to build a new computer from scratch or have the application guide them through the building process, Rig-Builder Pro will help users create the perfect computer to meet their needs.
+
+Rig-Builder Pro is a resourceful application that allows users to build their own personal computer. Whether users want to build a new computer from scratch or have the application guide them through the building process, Rig-Builder Pro will help users create the perfect computer to meet their needs.
 
 ## Description
+
 Rig-Builder Pro allows users two options for building computers. The first is a "Build My Own" option and the second is a "Build For Me" option. Using the expertise of A.I., the compatibility of all components will be checked to make sure everything will work as efficiently as possible. Our application allows users the ability to choose from many different components and it provides user reviews and ratings to help them choose the best parts for their computer. Rig-Builder Pro also allows a Budget option to help the user build a computer that they can afford.
 
 ![Rig-BuilderPro Homepage](./client/src/assets/RigBuilderPro.png)
 
 ## Table of Contents
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -14,9 +18,17 @@ Rig-Builder Pro allows users two options for building computers. The first is a 
 - [Acknowledgements](#acknowledgements)
 
 ## Installation
-Using this application from the files would require an 'npm i' followed by 'npm run develop' to get things started. However, our website can easily be used through the link instead: [Render link for when it's made]()
+
+Using this application from the files would require a few steps: 
+``` 
+npm i && npm run develop
+``` 
+However, the ai functions in the 'Build For Me' page will not be available in the raw files due to excluding our .env containing our OpenAI API key. 
+
+To combat this, our website can easily be used through a link instead: [Render link (empty)]()
 
 ## Usage
+
 This application is public and the code can easily be cloned to be used by anyone.
 
 ## License
@@ -54,5 +66,6 @@ If you have any questions or suggestions for this Project or its Repository, we 
 - [edmundseric13](https://github.com/edmundseric13) | (insert email opt.)
 - [BradBurr-Github](https://github.com/BradBurr-Github) | (insert email opt.)
 
-## Acknowledgements
+## Acknowledgements 
 None at this time.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
