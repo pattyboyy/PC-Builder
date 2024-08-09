@@ -73,33 +73,37 @@ Ensure your response is detailed, covering all components, clear, and profession
     const conclusion = sections[sections.length - 1];
 
     return (
-      <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">Detailed AI Recommendation</h3>
-        </div>
-        <div className="border-t border-gray-200">
-          <div className="px-4 py-5 sm:p-6">
-            <h4 className="text-md font-medium text-gray-900 mb-2">Overview</h4>
-            <p className="text-sm text-gray-600 mb-4">{overview}</p>
-            
-            <h4 className="text-md font-medium text-gray-900 mb-2">Recommended Components:</h4>
-            {components.map((component, index) => {
-              const [title, ...details] = component.split('\n');
-              return (
-                <div key={index} className="mb-4">
-                  <h5 className="text-sm font-medium text-gray-900">{title}</h5>
-                  <p className="text-sm text-gray-600">{details.join('\n')}</p>
-                </div>
-              );
-            })}
+      <div>
+        <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+          <div className="px-4 py-5 sm:px-6">
+            <h3 className="text-lg leading-6 font-medium text-gray-900">Detailed AI Recommendation</h3>
+          </div>
+          <div className="border-t border-gray-200">
+            <div className="px-4 py-5 sm:p-6">
+              <h4 className="text-md font-medium text-gray-900 mb-2">Overview</h4>
+              <p className="text-sm text-gray-600 mb-4">{overview}</p>
+              
+              <h4 className="text-md font-medium text-gray-900 mb-2">Recommended Components:</h4>
+              {components.map((component, index) => {
+                const [title, ...details] = component.split('\n');
+                return (
+                  <div key={index} className="mb-4">
+                    <h5 className="text-sm font-medium text-gray-900">{title}</h5>
+                    <p className="text-sm text-gray-600">{details.join('\n')}</p>
+                  </div>
+                );
+              })}
 
-            <h4 className="text-md font-medium text-gray-900 mb-2 mt-4">Component Synergy</h4>
-            <p className="text-sm text-gray-600 mb-4">{synergy}</p>
+              <h4 className="text-md font-medium text-gray-900 mb-2 mt-4">Component Synergy</h4>
+              <p className="text-sm text-gray-600 mb-4">{synergy}</p>
 
-            <h4 className="text-md font-medium text-gray-900 mb-2">Conclusion and Cost Breakdown</h4>
-            <p className="text-sm text-gray-600">{conclusion}</p>
+              <h4 className="text-md font-medium text-gray-900 mb-2">Conclusion and Cost Breakdown</h4>
+              <p className="text-sm text-gray-600">{conclusion}</p>
+            </div>
           </div>
         </div>
+        <br/>
+        <button className="btn btn-primary btn-block py-3" type="submit">Save Build</button>
       </div>
     );
   };
