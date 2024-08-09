@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
@@ -11,15 +12,40 @@ import logo from './assets/RBPro(final).png'; // Logo for the website
 import './App.css';
 import Auth from '../utils/auth';
 
+console.log("App.jsx is being processed");
+
+// Create an http link
+const httpLink = createHttpLink({
+  uri: '/graphql', // This will use the Vite proxy
+});
+
+// Create an auth link
+const authLink = setContext((_, { headers }) => {
+  const token = Auth.getToken();
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// Create the Apollo Client instance
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql', // Replace with your actual GraphQL endpoint
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
   credentials: 'include' // Add this line for handling cookies if needed
 });
 
 const App = () => {
+    console.log("App component is rendering");
+
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
+
+    useEffect(() => {
+        console.log("App component mounted");
+    }, []);
 
     const handleLogout = () => {
         Auth.logout();
@@ -59,6 +85,7 @@ const App = () => {
     return (
         <Router>
             <div className="min-h-screen bg-secondary-50 text-secondary-900">
+                {console.log("Rendering header")}
                 <header className="bg-white shadow-soft">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center py-6">
@@ -128,21 +155,8 @@ const App = () => {
     );
 };
 
-const About = () => (
-    <div>
-        <h2 className="text-2xl font-semibold mb-4">About Rig-Builder Pro</h2>
-        <p>Rig-Builder Pro is a powerful tool designed to help you create the perfect custom PC configuration.</p>
-    </div>
-);
-
-const Contact = () => (
-    <div>
-        <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
-        <p>If you have any questions or feedback, please don't hesitate to reach out to us.</p>
-    </div>
-);
-
 function AppWrapper() {
+    console.log("AppWrapper is rendering");
     return (
         <ApolloProvider client={client}>
             <App />
