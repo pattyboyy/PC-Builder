@@ -6,6 +6,7 @@ const PCConfiguration = ({ selectedComponents, aiRecommendation }) => {
   const [compatibilityResult, setCompatibilityResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [buildText, setBuildText] = useState('');
 
   const checkCompatibility = async () => {
     setLoading(true);
@@ -63,6 +64,25 @@ Ensure your response is detailed, covering all components, clear, and profession
     }
   };
 
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    setBuildText(event.target.value);
+  };
+
+  const handleButtonClick = async (event) => {
+    event.preventDefault();
+    try {
+      if(buildText === '') {
+        alert(`Please enter a Build Name to continue.`);
+        return;
+      }
+      alert(`You entered: ${buildText}`);
+      setBuildText('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const renderAIRecommendation = () => {
     if (!aiRecommendation) return null;
 
@@ -103,7 +123,16 @@ Ensure your response is detailed, covering all components, clear, and profession
           </div>
         </div>
         <br/>
-        <button className="btn btn-primary btn-block py-3" type="submit">Save Build</button>
+        <div>
+          <input
+            type="text"
+            onChange={handleInputChange}
+            placeholder="Build Name..."
+          />
+          <br/>
+          <br/>
+          <button className="btn btn-primary btn-block py-3" onClick={handleButtonClick} >Save Build</button>
+        </div>
       </div>
     );
   };

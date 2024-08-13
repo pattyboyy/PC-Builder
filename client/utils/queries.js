@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_BUILD = gql`
+export const QUERY_BUILDS = gql`
   query getBuild($id: ID!) {
     getBuild(id: $id) {
       id
@@ -18,7 +18,6 @@ export const QUERY_BUILD = gql`
     }
   }
 `;
-
 
 export const QUERY_USER = gql`
   {
