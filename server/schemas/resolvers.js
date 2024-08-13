@@ -5,6 +5,9 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    users: async () => {
+      return await User.find({});
+    },
     user: async (_, { id }) => {
       try {
         return await User.findById(id);
@@ -12,7 +15,10 @@ const resolvers = {
         throw new Error('Error fetching user');
       }
     },
-    builds: async (_, { userId }) => {
+    builds: async () => {
+      return await Build.find({}).populate('user');
+    },
+    buildsByUserId: async (_, { userId }) => {
       try {
         return await Build.find({ user: userId });
       } catch (error) {
@@ -50,27 +56,13 @@ const resolvers = {
         throw new Error('Error logging in');
       }
     },
-    createBuild: async (_, { userId, name, cpu, gpu, ram, storage, motherboard, powerSupply, caseName, cooling }, context) => {
+    addBuild: async (parent, { user, name, cpu, gpu, ram, storage, motherboard, powerSupply, caseName, cooling }) => {
       try {
-        // Check if user is authenticated
-        if (!context.user) {
-          throw new AuthenticationError('You need to be logged in to create a build');
-        }
-
-        const build = new Build({ 
-          user: userId, 
-          name, 
-          cpu, 
-          gpu, 
-          ram, 
-          storage, 
-          motherboard, 
-          powerSupply, 
-          case: caseName, 
-          cooling 
-        });
-        return await build.save();
+        console.log(`user:${user}`);
+        const result = await Build.create({ user, name, cpu, gpu, ram, storage, motherboard, powerSupply, caseName, cooling });
+        console.log(result);
       } catch (error) {
+        console.log(error);
         throw new Error('Error creating build');
       }
     },

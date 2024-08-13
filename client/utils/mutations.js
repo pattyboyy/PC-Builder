@@ -6,6 +6,7 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
+        username
         email
       }
     }
@@ -25,8 +26,8 @@ export const ADD_USER = gql`
   }
 `;
 
-export const CREATE_BUILD = gql`
-  mutation createBuild(
+export const ADD_BUILD = gql`
+  mutation addBuild(
     $userID: ID!
     $name: String!
     $cpu: String!
@@ -38,7 +39,7 @@ export const CREATE_BUILD = gql`
     $caseName: String!
     $cooling: String!
   ) {
-    createBuild(
+    addBuild(
       userID: $userID
       name: $name
       cpu: $cpu

@@ -18,9 +18,8 @@ const typeDefs = `
     storage: String!
     motherboard: String!
     powerSupply: String!
-    case: String!
+    caseName: String!
     cooling: String!
-    createdAt: String!
   }
 
   type Auth {
@@ -29,14 +28,16 @@ const typeDefs = `
   }
 
   type Query {
-    user(id: ID!): User
-    builds(userId: ID!): [Build!]!
+    users: [User]
+    user(id: ID!): User    
+    builds: [Build]
+    buildsByUserId(userId: ID!): [Build!]!
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createBuild(userId: ID!, name: String!, cpu: String!, gpu: String!, ram: String!, storage: String!, motherboard: String!, powerSupply: String!, case: String!, cooling: String!): Build!
+    addBuild(user:String!, name:String!, cpu:String!, gpu:String!, ram:String!, storage:String!, motherboard:String!, powerSupply:String!, caseName:String!, cooling:String!): Build
   }
 `;
 
