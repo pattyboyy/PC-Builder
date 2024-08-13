@@ -92,6 +92,9 @@ const App = () => {
                             <div className='header'>
                                 <Link to="/" className="text-3xl font-bold text-primary-600">Rig-Builder Pro</Link>
                             </div>
+                            {/* <button id="mobile-open-button" className="text-3xl sm:hidden focus:outline-none">
+                                &#9776;
+                            </button> */}
                             <nav>
                                 <ul className="flex space-x-4">
                                     <li><Link to="/" className="text-secondary-600 hover:text-primary-600 transition-soft">Home</Link></li>
