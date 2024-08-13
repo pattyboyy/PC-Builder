@@ -18,7 +18,7 @@ const MyBuilds = () => {
             <div className="flex flex-col gap-4 px-4 md:flex-row md:flex-wrap md:gap-6">
                 <div className="bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3">
                     <div className="mb-4">
-                        <h4 className="text-xl font-semibold">Build #1</h4>
+                        <h4 className="text-xl font-semibold">Gaming PC</h4>
                     </div>
                     <div>
                         <h6>CPU: Intel Core i3-10100</h6>
@@ -33,7 +33,7 @@ const MyBuilds = () => {
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3">
                     <div className="mb-4">
-                        <h4 className="text-xl font-semibold">Build #2</h4>
+                        <h4 className="text-xl font-semibold">School PC</h4>
                     </div>
                     <div>
                         <h6>CPU: AMD Ryzen 7 5800X3D</h6>
@@ -48,7 +48,7 @@ const MyBuilds = () => {
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3">
                     <div className="mb-4">
-                        <h4 className="text-xl font-semibold">Build #3</h4>
+                        <h4 className="text-xl font-semibold">PC for Daughter</h4>
                     </div>
                     <div>
                         <h6>CPU: Intel Core i9-13900K</h6>
@@ -59,6 +59,21 @@ const MyBuilds = () => {
                         <h6>Power Supply: Seasonic PRIME TX-1000 1000W 80+ Titanium</h6>
                         <h6>Case: Thermaltake View 71 TG RGB</h6>
                         <h6>Cooling: Arctic Liquid Freezer II 280</h6>
+                    </div>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3">
+                    <div className="mb-4">
+                        <h4 className="text-xl font-semibold">Unlimited Funds PC</h4>
+                    </div>
+                    <div>
+                        <h6>CPU: Intel Core i9-11900K</h6>
+                        <h6>GPU: AMD Radeon RX 6600 XT</h6>
+                        <h6>RAM: Patriot Viper Steel 32GB (2x16GB) DDR4-3200</h6>
+                        <h6>Storage: Seagate FireCuda 530 2TB NVMe SSD</h6>
+                        <h6>Motherboard: MSI MAG B550 Tomahawk</h6>
+                        <h6>Power Supply: Thermaltake Toughpower GF3 1000W 80+ Gold</h6>
+                        <h6>Case: Fractal Design Pop Air</h6>
+                        <h6>Cooling: Cryorig C7</h6>
                     </div>
                 </div>
             </div>
