@@ -16,9 +16,11 @@ const LoginModal = ({ onClose, onSignupClick }) => {
     e.preventDefault();
     setError('');
     try {
+        console.log(email, password);
       const { data } = await login({
         variables: { email, password },
       });
+        console.log(data);
       Auth.login(data.login.token);
       onClose();
     } catch (err) {
