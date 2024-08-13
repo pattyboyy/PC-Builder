@@ -16,10 +16,10 @@ export default defineConfig({
     proxy: {
       '/graphql': {
         target: process.env.NODE_ENV === 'production' 
-          ? 'https://rig-builderpro.onrender.com'  // Replace with your actual production server URL
+          ? 'https://rig-builderpro.onrender.com'
           : 'http://localhost:3001',
         changeOrigin: true,
-        secure: false,
+        secure: process.env.NODE_ENV === 'production',
         ws: true,
       }
     }
@@ -32,10 +32,16 @@ export default defineConfig({
     outDir: 'dist',
     minify: 'terser',
     sourcemap: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     // Add other environment variables you need in the frontend
     // 'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL),
   },
-})
+});
