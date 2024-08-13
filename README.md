@@ -1,5 +1,4 @@
 <a id="readme-top"></a>
- 
 <div align='center'><img src='./client/src/assets/RBPro(final).png' width='80'></div>
 <h1 align='center'>Rig-Builder Pro</h1>
 
