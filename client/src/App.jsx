@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, useApolloClient } from '@apollo/client';
 import Welcome from './components/Welcome';
 import BuildForMe from './components/BuildForMe';
 import BuildOnMyOwn from './components/BuildOnMyOwn';
@@ -17,14 +17,29 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const App = () => {
+const AppContent = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
+    const apolloClient = useApolloClient();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        Auth.logout();
+        apolloClient.resetStore();
+        navigate('/');
+    };
 
     const showLogout = () => {
         if (Auth.loggedIn()) {
             return (
-                <li><Link to="/logout" className="text-secondary-600 hover:text-primary-600 transition-soft">Logout</Link></li>
+                <li>
+                    <button 
+                        onClick={handleLogout} 
+                        className="text-secondary-600 hover:text-primary-600 transition-soft"
+                    >
+                        Logout
+                    </button>
+                </li>
             );
         } else {
             return (
@@ -44,8 +59,7 @@ const App = () => {
         setShowSignupModal(true);
     };
 
-  return (
-    <Router>
+    return (
       <div className="min-h-screen bg-secondary-50 text-secondary-900">
         <header className="bg-white shadow-soft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,23 +128,16 @@ const App = () => {
           />
         )}
       </div>
+    );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };
-
-const About = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">About Rig-Builder Pro</h2>
-    <p>Rig-Builder Pro is a powerful tool designed to help you create the perfect custom PC configuration.</p>
-  </div>
-);
-
-const Contact = () => (
-  <div>
-    <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
-    <p>If you have any questions or feedback, please don't hesitate to reach out to us.</p>
-  </div>
-);
 
 function AppWrapper() {
   return (
