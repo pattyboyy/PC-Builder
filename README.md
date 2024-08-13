@@ -19,10 +19,28 @@ Rig-Builder Pro allows users two options for building computers. The first is a 
 
 ## Technologies Used
 
-- 
-- 
-- 
-- 
+* ![React Badge](https://img.shields.io/badge/React-white?style=for-the-badge&logo=react&color=%23323738&link=https%3A%2F%2Freact.dev%2F)
+
+* ![OpenAI API Badge](https://img.shields.io/badge/OpenAI_API-white?style=for-the-badge&logo=openai&color=black&link=https%3A%2F%2Fopenai.com%2Findex%2Fopenai-api%2F)
+
+
+* ![MongoDB Badge](https://img.shields.io/badge/mongodb-white?style=for-the-badge&logo=mongodb&link=https%3A%2F%2Fwww.mongodb.com%2F)
+
+* ![Mongoose Badge](https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose&color=%23731d1d&link=https%3A%2F%2Fmongoosejs.com%2F)
+
+* ![GraphQL Badge](https://img.shields.io/badge/GraphQL-white?style=for-the-badge&logo=graphql&color=%23c406a5&link=https%3A%2F%2Fgraphql.org%2F)
+
+* ![Apollo GraphQL Badge](https://img.shields.io/badge/Apollo_GraphQL-white?style=for-the-badge&logo=apollographql&color=%23c9460e&link=https%3A%2F%2Fwww.apollographql.com%2F)
+
+* ![Dot Env Badge](https://img.shields.io/badge/.Env-white?style=for-the-badge&logo=dotenv&color=grey&link=https%3A%2F%2Fwww.dotenv.org%2F)
+
+* ![Vite Badge](https://img.shields.io/badge/Vite-white?style=for-the-badge&logo=vite&link=https%3A%2F%2Fvitejs.dev%2F)
+
+* ![Express Badge](https://img.shields.io/badge/Express-white?style=for-the-badge&logo=express&color=black&link=https%3A%2F%2Fexpressjs.com%2F)
+
+* ![JWT Badge](https://img.shields.io/badge/JWT-white?style=for-the-badge&logo=jsonwebtokens&color=%23a717cf&link=https%3A%2F%2Fjwt.io%2F)
+
+* ![Tailwind Badge](https://img.shields.io/badge/Tailwind-black?style=for-the-badge&logo=tailwindcss&color=%234a565c&link=https%3A%2F%2Ftailwindcss.com%2F)
 
 ## Installation
 
