@@ -15,7 +15,9 @@ const app = express();
 
 // Configure CORS
 const corsOptions = {
-  origin: 'http://localhost:3000', // Your client's URL
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://your-render-domain.onrender.com', 'https://rig-builderpro.onrender.com']
+    : 'http://localhost:3000',
   credentials: true
 };
 
