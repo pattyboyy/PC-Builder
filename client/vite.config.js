@@ -1,22 +1,20 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-
+  base: process.env.NODE_ENV === 'production' ? '/' : '/',
   server: {
     port: 3000,
     open: true,
     proxy: {
       '/graphql': {
-        target: 'http://localhost:3001', // Changed to 3001, assuming your GraphQL server runs on this port
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
-        ws: true, // Enable WebSocket proxy
+        ws: true,
       }
     }
   },
@@ -26,5 +24,10 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    minify: 'terser',
+    sourcemap: false,
+  },
+  define: {
+    'process.env': process.env
   },
 })
