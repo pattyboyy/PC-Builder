@@ -5,6 +5,12 @@ import BenchmarkSystem from './BenchmarkSystem';
 import { ADD_BUILD } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
+const styles = {
+  inputStyle: {
+    "border-radius": "8px",
+  },
+};
+
 const BuildOnMyOwn = () => {
   const [buildText, setBuildText] = useState('');
   const [selectedComponents, setSelectedComponents] = React.useState({});
@@ -125,6 +131,7 @@ const BuildOnMyOwn = () => {
       <br/>
       <div>
         <input
+          style={styles.inputStyle}
           type="text"
           onChange={handleInputChange}
           placeholder="Build Name..."

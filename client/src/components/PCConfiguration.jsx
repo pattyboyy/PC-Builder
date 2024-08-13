@@ -2,6 +2,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const styles = {
+  inputStyle: {
+    "border-radius": "8px",
+  },
+};
+
 const PCConfiguration = ({ selectedComponents, aiRecommendation }) => {
   const [compatibilityResult, setCompatibilityResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -125,6 +131,7 @@ Ensure your response is detailed, covering all components, clear, and profession
         <br/>
         <div>
           <input
+            style={styles.inputStyle}
             type="text"
             onChange={handleInputChange}
             placeholder="Build Name..."
