@@ -87,7 +87,7 @@ If you have any questions or suggestions for this Project or its Repository, we 
 
 - [pattyboyy](https://github.com/pattyboyy) | (insert email opt.)
 - [bschwendiman90](https://github.com/bschwendiman90) | (insert email opt.)
-- [gonz951](https://github.com/gonz951) | (insert email opt.)
+- [gonz951](https://github.com/gonz951) | felgonzalez951@gmail.com
 - [edmundseric13](https://github.com/edmundseric13) | (insert email opt.)
 - [BradBurr-Github](https://github.com/BradBurr-Github) | (insert email opt.)
 
