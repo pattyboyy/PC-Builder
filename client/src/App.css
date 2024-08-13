@@ -18,6 +18,67 @@
   flex-direction: row;
 }
 
+.notLoggedIn {
+  font-size: 28px;
+}
+
+.buildContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.myBuilds {
+  font-size: 50px;
+  font-family: 'Forum', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 50px;
+}
+
+.card-builds {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card-builds-header {
+  padding: 16px;
+  border-bottom: 2px solid #007bff; /* Line color and thickness */
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.card-builds h4 {
+  margin: 0;
+  font-size: 24px;
+}
+ 
+.card-builds h6 {
+  margin: 0;
+  font-size: 18px;
+  text-align: left;
+  
+}
+
+.card-builds:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+  
+.container {
+  padding: 2px 16px;
+  display:grid;
+    gap: 16px; /* Adds space between the cards */
+    width: 80%; /* Adjust width as needed */
+  justify-content: center;
+    gap: 16px; /* Adds space between the cards */
+    width: 100%; /* Adjust width as needed */
+}
+
+
 /* Used for the react logo that isn't here anymore */
 /*.logo {
   height: 6em;

@@ -34,7 +34,7 @@ const buildSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  case: {
+  caseName: {
     type: String,
     required: true
   },
