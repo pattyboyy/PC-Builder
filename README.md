@@ -24,7 +24,6 @@ Rig-Builder Pro allows users two options for building computers. The first is a 
 
 * ![OpenAI API Badge](https://img.shields.io/badge/OpenAI_API-white?style=for-the-badge&logo=openai&color=black&link=https%3A%2F%2Fopenai.com%2Findex%2Fopenai-api%2F)
 
-
 * ![MongoDB Badge](https://img.shields.io/badge/mongodb-white?style=for-the-badge&logo=mongodb&link=https%3A%2F%2Fwww.mongodb.com%2F)
 
 * ![Mongoose Badge](https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose&color=%23731d1d&link=https%3A%2F%2Fmongoosejs.com%2F)
@@ -51,7 +50,7 @@ npm i && npm run develop
 ``` 
 However, the ai functions in the 'Build For Me' page will not be available in the raw files due to excluding our .env containing our OpenAI API key. 
 
-To combat this, a new .env may be created with a personal OpenAI Key or our website can easily be used through a link instead: [Render link (empty)]()
+To combat this, a new .env may be created with a personal OpenAI Key or our website can easily be used through a link instead: [Rig-Builder Pro on Render](https://rig-builderpro-a6ui.onrender.com/)
 
 ## Usage
 
