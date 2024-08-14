@@ -13,7 +13,7 @@ import './App.css';
 import Auth from '../utils/auth';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql', // Replace with your actual GraphQL endpoint
+  uri: '/graphql', // Replace with your actual GraphQL endpoint
   cache: new InMemoryCache(),
 });
 
