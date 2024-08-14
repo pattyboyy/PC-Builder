@@ -8,6 +8,8 @@ Rig-Builder Pro is a resourceful application that allows users to build their ow
 
 Rig-Builder Pro allows users two options for building computers. The first is a "Build My Own" option and the second is a "Build For Me" option. Using the expertise of A.I., the compatibility of all components will be checked to make sure everything will work as efficiently as possible. Our application allows users the ability to choose from many different components and it provides the user some feedback to help them choose the best parts for their computer. Rig-Builder Pro also allows a Budget option to help the user build a computer that they can afford.
 
+![Rig-Builder Pro Homepage](./client/src/assets/Homepage.png)
+
 ## Table of Contents
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
